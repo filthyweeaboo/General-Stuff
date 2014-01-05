@@ -1,2 +1,2 @@
-Unintersting scripts for when I distrohop
-=========================================
+Some helpful scripts for myself
+========================================
