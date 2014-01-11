@@ -21,7 +21,7 @@ wget http://crunchbang.org/forums/viewtopic.php?id=24722
 wget http://switch.dl.sourceforge.net/project/deadbeef/debian/0.6.0/deadbeef-static_0.6.0-2_i386.deb
 wget http://switch.dl.sourceforge.net/project/deadbeef/deadbeef-static_0.6.0-2_i686.tar.bz2
 wget https://github.com/Lokaltog/powerline-fonts/raw/master/AnonymousPro/Anonymice%20Powerline.ttf
-
+wget http://dl.dropboxusercontent.com/s/vv0qsrixm3z2hss/Grabber_3.4.1.exe
 #Repos
 echo 'Adding repos'
 sudo add-apt-repository -y ppa:mozillateam/firefox-next
@@ -37,10 +37,10 @@ sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo apt-get -y update
 
 #Installing software
-sudo apt-get install -y firefox vrms gimp wine1.7 winetricks scrot htop ranger arandr geany comix feh bum mencoder ffmpeg mplayer rar gnome-tweak-tool git gtk-chtheme ipkungfu snort rkhunter chkrootkit tiger clamav pwgen p7zip-full secure-delete youtube-dl gnome-shell gnome-shell-extensions nwipe wipe scrotwm scrub hashalot whois pyrenamer portsentry netdiag pekwm xmobar vim vim-scripts bleachbit tree byzanz emacs24 inkscape cmake vim-addon-manager vim-gtk simplescreenrecorder audacity gufw winff openbox obconf openbox-themes vlc browser-plugin-vlc xfce4-mixer synaptic thunar
+sudo apt-get install -y firefox pv vrms gimp wine1.7 winetricks scrot htop ranger arandr geany comix feh bum mencoder ffmpeg mplayer rar gnome-tweak-tool git gtk-chtheme ipkungfu snort rkhunter chkrootit tiger clamav pwgen p7zip-full secure-delete youtube-dl gnome-shell gnome-shell-extensions nwipe wipe scrotwm scrub hashalot whois pyrenamer portsentry pekwm xmobar vim vim-scripts bleachbit tree byzanz emacs24 inkscape cmake vim-addon-manager vim-gtk simplescreenrecorder audacity gufw winff openbox obconf openbox-themes vlc browser-plugin-vlc xfce4-mixer synaptic thunar
 
 #various dependencies
-sudo apt-get install -y build-essential libx11-dev libxinerama-dev sharutils suckless-tools devscripts equivs libimlib2-dev libquvi-dev libquvi-scripts libx11-dev yasm libpng3 freetype* libgif4 libtiff4 libjpeg62 libxext-dev lua5.2 Lua-lgi pythoncard-tools default-jre libsdl1.2debian:i386 libsdl-image1.2:i386 libsdl-ttf2.0-0:i386 libglu1-mesa:i386 libgtk2.0-0:i386 libopenal1:i386 libjpeg62:i386 git mercurial libqt4-dev qt4-qmake wget coreutils tar unzip unrar make g++ gcc patch xterm sed python gtk2-engines-blueheart gtk2-engines-equinox gtk2-engines-moblin gtk2-engines-nodoka gtk2-engines-oxygen gtk2-engines-qtcurve gtk2-engines-wonderland gtk3-engines-oxygen gtk3-engines-unico gtk3-engines-xfce libcairo2-dev libpango1.0-dev libglib2.0-dev libimlib2-dev libxinerama-dev libx11-dev libxdamage-dev libxcomposite-dev libxrender-dev libxrandr-dev libass-dev libavutil-dev libavcodec-dev libavformat-dev libswscale-dev libncurses5-dev
+sudo apt-get install -y build-essential libx11-dev libxinerama-dev sharutils suckless-tools devscripts equivs libimlib2-dev libquvi-dev libquvi-scripts yasm libpng3 freetype* libgif4 libtiff4 libjpeg62 libxext-dev lua5.2 Lua-lgi pythoncard-tools default-jre libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 mercurial libqt4-dev qt4-qmake wget coreutils tar unzip unrar make g++ gcc patch xterm sed python gtk2-engines-blueheart gtk2-engines-equinox gtk2-engines-moblin gtk2-engines-nodoka gtk2-engines-oxygen gtk2-engines-qtcurve gtk2-engines-wonderland gtk3-engines-oxygen gtk3-engines-unico gtk3-engines-xfce libcairo2-dev libpango1.0-dev libglib2.0-dev libimlib2-dev libxinerama-dev libx11-dev libxdamage-dev libxcomposite-dev libxrender-dev libxrandr-dev libass-dev libavutil-dev libavcodec-dev libavformat-dev libswscale-dev libncurses5-dev
 
 #update and upgrade
 sudo apt-get -y update
@@ -58,7 +58,8 @@ git clone git://github.com/xorg62/wmfs.git
 git clone https://github.com/nojhan/liquidprompt.git
 git clone https://github.com/fish-shell/fish-shell
 git clone https://github.com/milkbikis/powerline-shell
-
+git clone https://github.com/xyl0n/iris-light
+git clone https://github.com/myimouto/myimouto
 sudo dpkg -i deadbeef-static_0.6.0-2_i386.deb
 sudo dpkg -i steam.deb
 
@@ -74,7 +75,7 @@ sudo apt-get -f install
 #Remove bloat
 #echo 'bloat removal, May brake some stuff I think'
 #Continually changing + adding different DEs
-sudo apt-get remove -m libreoffice* totem cheese evolution gedit gnome-mahjongg gnome-mines empathy software-center software-center libreoffice rhythmbox brasero simple-scan aisleriot zeitgeist zeitgeist-core zeitgeist-datahub gnome-sudoku
+sudo apt-get remove -m libreoffice* totem cheese evolution gedit gnome-mahjongg gnome-mines empathy software-center software-center libreoffice rhythmbox brasero simple-scan aisleriot zeitgeist zeitgeist-core zeitgeist-datahub gnome-sudoku unity unity-common unity-services unity-lens-\* unity-scope-\* unity-webapps-\* gnome-control-center-unity hud libunity-core-6\* libunity-misc4 libunity-webapps\* appmenu-gtk appmenu-gtk3 appmenu-qt\* overlay-scrollbar\* activity-log-manager-control-center firefox-globalmenu thunderbird-globalmenu libufe-xidgetter0 xul-ext-unity xul-ext-webaccounts webaccounts-extension-common xul-ext-websites-integration gnome-control-center gnome-session
 
 sudo apt-get -f install
 
@@ -158,6 +159,7 @@ sudo apt-get -y autoremove
 #cd /gitrepo
 #./df-lnp-installer.sh
 
+sudo mv iris-light/ /usr/share/themes/
 cp /media/$user/GANYMEDE/essentials/hosts.sh /home/$user/
 sh hosts.sh
 mkdir /home/$user/bin 
@@ -174,6 +176,7 @@ sudo rm -r Templates
 sudo rm -r Public
 cp /media/$user/GANYMEDE/essentials/deadbeef /home/$user/
 cp /media/sweeb/GANYMEDE/essentials/settings.ini /home/$user/.config/gtk-3.0/
+
 #general stuff
 #sudo tiger
 sudo apt-get -y clean
@@ -188,11 +191,31 @@ sudo rkhunter -c --sk
 #PewDiePie,TobyGames,SmoshGames,Apple,DSPGaming,PandaLeeGames,GirlGoneGamer,darksydephil,Machinima,CinnamonToastKen,CutiePieMarzia,SeaNanners,TheSyndicateProject,smosh,THEKINGOFHATEVLOGS,danisnotonfire,CaptainSparklez,SkyDoesMinecraft,BlueXephos,Yogscastlalna,sssniperwolf,MinnesotaBurns,WhiteBoy7thst,Whiteboy7thst2,CAT7thst,i7thst,UberHaxorNova,speedyw03,nerimon
 #it might be possible to automate this i think
 #
-#install muh dwarves via script
-#will do next
+#echo "ls -l" | at midnight
+#issue command at certain time
 #
-#put hosts.sh on github then wget it and run it via the script
+#wget -qO - http://infiltrated.net/blacklisted|awk '!/#|[a-z]/&&/./{print "iptables -A INPUT -s "$1" -j DROP"}' |sh
+#update iptables
 #
+#lsof -P -i -n
+#shows all software using internet
+#
+#sudo dd if=/dev/mem | cat | strings
+#shows all info stored in ram in plaintext
+#
+#find -not -empty -type f -printf "%s\n" | sort -rn | uniq -d | xargs -I{} -n1 find -type f -size {}c -print0 | xargs -0 md5sum | sort | uniq -w32 --all-repeated=separate
+#Find Duplicate Files (based on size first, then MD5 hash) 
+#
+#don't lose this magnet:?xt=urn:btih:fe07e5640d721dcddb68dfca337fde2433490294&dn=lolisv4&tr=http%3A%2F%2Ftracker.publicbt.com%3A80
+#
+#ifconfig | convert label:@- ip.png
+#puts command result into an image
+#
+#wget --random-wait -r -p -e robots=off -U mozilla http://www.example.com
+#mirror a site
+#
+#mtr google.com
+# better than traceroute
 #port to fedora/debian
 #su nano /etc/yum.repos.d # add repo cli code
 #
@@ -738,3 +761,4 @@ PORT_BANNER="** UNAUTHORIZED ACCESS PROHIBITED *** YOUR CONNECTION ATTEMPT HAS B
 #sudo chattr +i /etc/resolv.conf
 
 #source liquidprompt/liquidprompt
+echo "The script is done,Enjoy" | pv -qL 10
