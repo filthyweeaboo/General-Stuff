@@ -37,7 +37,7 @@ sudo add-apt-repository -y ppa:nilarimogard/webupd8
 sudo apt-get -y update
 
 #Installing software
-sudo apt-get install -y firefox pv vrms gimp wine1.7 winetricks scrot htop ranger arandr geany comix feh bum mencoder ffmpeg mplayer rar gnome-tweak-tool git gtk-chtheme ipkungfu snort rkhunter chkrootkit tiger clamav pwgen p7zip-full secure-delete youtube-dl gnome-shell gnome-shell-extensions nwipe wipe scrotwm scrub hashalot whois pyrenamer portsentry pekwm xmobar vim vim-scripts bleachbit tree byzanz emacs24 inkscape cmake vim-addon-manager vim-gtk simplescreenrecorder audacity gufw winff openbox obconf openbox-themes vlc browser-plugin-vlc xfce4-mixer synaptic thunar
+sudo apt-get install -y firefox pv autoconf vrms gimp wine1.7 winetricks scrot htop ranger arandr geany comix feh bum mencoder ffmpeg mplayer rar gnome-tweak-tool git gtk-chtheme ipkungfu snort rkhunter chkrootkit tiger clamav pwgen p7zip-full secure-delete youtube-dl gnome-shell gnome-shell-extensions nwipe wipe scrotwm scrub hashalot whois pyrenamer portsentry pekwm xmobar vim vim-scripts bleachbit tree byzanz emacs24 inkscape cmake vim-addon-manager vim-gtk simplescreenrecorder audacity gufw winff openbox obconf openbox-themes vlc browser-plugin-vlc xfce4-mixer synaptic thunar
 
 #various dependencies
 sudo apt-get install -y build-essential libx11-dev libxinerama-dev sharutils suckless-tools devscripts equivs libimlib2-dev libquvi-dev libquvi-scripts yasm libpng3 freetype* libgif4 libtiff4 libjpeg62 libxext-dev lua5.2 Lua-lgi pythoncard-tools default-jre libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libopenal1 mercurial libqt4-dev qt4-qmake wget coreutils tar unzip unrar make g++ gcc patch xterm sed python gtk2-engines-blueheart gtk2-engines-equinox gtk2-engines-moblin gtk2-engines-nodoka gtk2-engines-oxygen gtk2-engines-qtcurve gtk2-engines-wonderland gtk3-engines-oxygen gtk3-engines-unico gtk3-engines-xfce libcairo2-dev libpango1.0-dev libglib2.0-dev libimlib2-dev libxinerama-dev libx11-dev libxdamage-dev libxcomposite-dev libxrender-dev libxrandr-dev libass-dev libavutil-dev libavcodec-dev libavformat-dev libswscale-dev libncurses5-dev
@@ -78,7 +78,7 @@ sudo apt-get -f install
 sudo apt-get remove -m libreoffice* totem cheese evolution gedit gnome-mahjongg gnome-mines empathy software-center software-center libreoffice rhythmbox brasero simple-scan aisleriot zeitgeist zeitgeist-core zeitgeist-datahub gnome-sudoku unity unity-common unity-services unity-lens-\* unity-scope-\* unity-webapps-\* gnome-control-center-unity hud libunity-core-6\* libunity-misc4 libunity-webapps\* appmenu-gtk appmenu-gtk3 appmenu-qt\* overlay-scrollbar\* activity-log-manager-control-center firefox-globalmenu thunderbird-globalmenu libufe-xidgetter0 xul-ext-unity xul-ext-webaccounts webaccounts-extension-common xul-ext-websites-integration gnome-control-center gnome-session
 
 sudo apt-get -f install
-
+sudo apt-get autoremove
 
 #install icons and themes
 cd
@@ -97,9 +97,11 @@ cd
 #building from source
 #For muh chinese cartoons
 cd mpv/
+python bootstrap.py
 ./waf configure
 ./waf build
 sudo ./waf install
+cd
 
 #libsodium
 tar xzf libsodium-0.4.5.tar.gz
@@ -112,14 +114,6 @@ cd
 tar -jxvf dnscrypt-proxy-1.3.3.tar.bz2 
 cd dnscrypt-proxy-1.3.3/
 ./configure && make -j2
-sudo make install
-cd
-
-#menumaker
-tar xzf menuemaker-0.99.7.tar.gz
-cd menumaker-0.99.7/
-./configure
-make
 sudo make install
 cd
 
@@ -151,7 +145,6 @@ mv Anonymice\ Powerline.ttf .fonts/
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -f install
-sudo apt-get -f install
 sudo apt-get -y autoremove
 
 #Muh dorf fort
@@ -160,7 +153,7 @@ sudo apt-get -y autoremove
 #./df-lnp-installer.sh
 
 sudo mv iris-light/ /usr/share/themes/
-cp /media/$user/lel/essentials/hosts.sh /home/$user/
+cp /media/$user/lel/essentials/hosts.sh /home/$user
 sh hosts.sh
 mkdir /home/$user/bin 
 cp /media/$user/lel/essentials/dorffort.tar.gz /home/$user/bin
