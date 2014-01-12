@@ -160,22 +160,22 @@ sudo apt-get -y autoremove
 #./df-lnp-installer.sh
 
 sudo mv iris-light/ /usr/share/themes/
-cp /media/$user/GANYMEDE/essentials/hosts.sh /home/$user/
+cp /media/$user/lel/essentials/hosts.sh /home/$user/
 sh hosts.sh
 mkdir /home/$user/bin 
-cp /media/$user/GANYMEDE/essentials/dorffort.tar.gz /home/$user/bin
+cp /media/$user/lel/essentials/dorffort.tar.gz /home/$user/bin
 cd /home/$user/bin
 tar xzf dorffort.tar.gz
 rm dorffort.tar.gz
 cd
-cp /media/$user/GANYMEDE/essentials/DroidSans.otf /home/$user/.fonts/
+cp /media/$user/lel/essentials/DroidSans.otf /home/$user/.fonts/
 rm dnscrypt-proxy-1.3.3.tar.bz2
 rm libsodium-0.4.5.tar.gz
 rm steam.deb
 sudo rm -r Templates
 sudo rm -r Public
-cp /media/$user/GANYMEDE/essentials/deadbeef /home/$user/
-cp /media/sweeb/GANYMEDE/essentials/settings.ini /home/$user/.config/gtk-3.0/
+cp /media/$user/lel/essentials/deadbeef /home/$user/
+cp /media/sweeb/lel/essentials/settings.ini /home/$user/.config/gtk-3.0/
 
 #general stuff
 #sudo tiger
