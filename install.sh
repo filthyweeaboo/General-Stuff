@@ -200,7 +200,8 @@ sudo rkhunter -c --sk
 #Find Duplicate Files (based on size first, then MD5 hash) 
 #
 #don't lose this magnet:?xt=urn:btih:fe07e5640d721dcddb68dfca337fde2433490294&dn=lolisv4&tr=http%3A%2F%2Ftracker.publicbt.com%3A80
-#
+# magnet:?xt=urn:btih:6437fc096e436bd692df04c1345e07454ae27041&dn=%5BHorribleSubs%5D%20Love%20Lab%20%5B720p%5D&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337
+
 #ifconfig | convert label:@- ip.png
 #puts command result into an image
 #
