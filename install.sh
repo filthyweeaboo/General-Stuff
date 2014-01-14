@@ -202,6 +202,7 @@ sudo rkhunter -c --sk
 #don't lose this magnet:?xt=urn:btih:fe07e5640d721dcddb68dfca337fde2433490294&dn=lolisv4&tr=http%3A%2F%2Ftracker.publicbt.com%3A80
 # magnet:?xt=urn:btih:6437fc096e436bd692df04c1345e07454ae27041&dn=%5BHorribleSubs%5D%20Love%20Lab%20%5B720p%5D&tr=udp%3A%2F%2Ftracker.publicbt.com%3A80%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337
 #magnet:?xt=urn:btih:5c487e738cc14c876d7f2d75cc8fa60ae83fded0&dn=%5BEROBEAT%5D%5F%5BSubDESU-H%5D%5FFault%21%21&tr=http%3A%2F%2Fjanuary.bakabt.me%3A2710%2F8d3d78464d6c57af654bf384b65d1bda%2Fannounce.php
+#magnet:?xt=urn:btih:3B345951B8C4351FC4F8FA0287FE4A54DAAE7586&dn=the+emperor+s+new+groove+2000+1080p+bdrip+h264+aac+kingdom&tr=udp%3A%2F%2Ftracker.seedceo.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fopen.demonii.com%3A1337
 #ifconfig | convert label:@- ip.png
 #puts command result into an image
 #
