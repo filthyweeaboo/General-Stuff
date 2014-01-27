@@ -67,7 +67,7 @@ sudo apt-get -f install
 #Remove bloat
 #echo 'bloat removal, May brake some stuff I think'
 #Continually changing + adding different DEs
-sudo apt-get remove -m libreoffice* totem cheese evolution gedit gnome-mahjongg gnome-mines empathy software-center software-center libreoffice rhythmbox brasero simple-scan aisleriot zeitgeist zeitgeist-core zeitgeist-datahub gnome-sudoku unity unity-common unity-services unity-lens-\* unity-scope-\* unity-webapps-\* gnome-control-center-unity hud libunity-core-6\* libunity-misc4 libunity-webapps\* appmenu-gtk appmenu-gtk3 appmenu-qt\* overlay-scrollbar\* activity-log-manager-control-center firefox-globalmenu thunderbird-globalmenu libufe-xidgetter0 xul-ext-unity xul-ext-webaccounts webaccounts-extension-common xul-ext-websites-integration gnome-control-center gnome-session
+sudo apt-get remove -m libreoffice* totem cheese evolution gedit gnome-mahjongg gnome-mines empathy software-center software-center libreoffice brasero simple-scan aisleriot zeitgeist zeitgeist-core zeitgeist-datahub gnome-sudoku unity unity-common unity-services unity-lens-\* unity-scope-\* unity-webapps-\* gnome-control-center-unity hud libunity-core-6\* libunity-misc4 libunity-webapps\* appmenu-gtk appmenu-gtk3 appmenu-qt\* overlay-scrollbar\* activity-log-manager-control-center firefox-globalmenu thunderbird-globalmenu libufe-xidgetter0 xul-ext-unity xul-ext-webaccounts webaccounts-extension-common xul-ext-websites-integration gnome-control-center gnome-session
 
 sudo apt-get -f install
 sudo apt-get autoremove
