@@ -1,0 +1,201 @@
+#!/bin/sh
+# Shell script for One Click Kernel Compile and Installation
+# Programmed by Hari prasad B
+# Copyright (C) 2011, Hari prasad <hari.hosting@gmail.com>
+# 
+# NOTE:
+# THIS SCRIPT WILL ONLY WORK WHEN apt-get IS THERE , IF IT IS NOT THERE please install it and then start this script.
+# Tested on UBUNTU,FEDORA
+
+#HOW TO RUN THIS
+# step 1:  Dowmload the latest stable kernel version from kernel.org in and copy to any directory.  
+# step 2: place this script to that directory and run it...
+
+# eg. sh kernel_install_by_hari.sh	
+
+
+# thats all! :-)  ... do look at the code to understand,,,
+
+
+#NOTE: IF YOU ARE COMPILING THIS FOR SECOND TIME ... UNCOMMENT MAKE CLEAN COMMAND
+
+HOME_URL=http://pcideas.blogspot.com
+HOME_MAIL=hari.hosting@gmail.com
+
+clear
+echo "		        	Auto Kernel Compile and Install"
+echo "		        	================================="
+echo
+echo "This program will compile and install a new kernel in your system"
+echo "This program will need apt-get to work properly, if it is not present it will be downloaded automatically , so You need a Internet connection  for this program to work correctly..." 
+echo
+echo  "Programmed by Hari prasad  ($HOME_MAIL) "
+echo "for updates visit my blog @  $HOME_URL"
+echo
+echo
+echo
+echo  Starting Auto Kernel Compile and Install...
+echo
+echo
+echo
+ls linux-*.bz2 
+k_found=$(eval ls linux-*.bz2 | wc -l)
+
+echo "found the above $k_found kernels"
+echo
+if  [ $k_found  -eq  0  ]
+then
+echo "No kernels found.... both the kernel file  and this script will have to be in the same directory..."
+echo
+echo "for eg. "
+echo " if you have downloaded kernel file linux-2.6.39.1.tar.bz2 , then make sure you have linux-2.6.39.1.tar.bz2 and kernel_install_by_hari.sh (this script) in the same directory "
+echo
+echo exiting now...
+exit
+fi	
+
+#find and choose the kernel with latest version
+k0=$( ls linux-*.bz2  | sort | tail -1)
+echo " i have found latest kernel version file as $k0"
+echo
+echo "Enter which kernel version number to compile and install ? "
+echo
+echo "for eg. if you have downloaded linux-2.6.39.1.tar.bz2 then your version number is 2.6.39.1 , then enter 2.6.39.1 below "
+echo
+echo " Enter kernel version number only ?  "
+read k
+echo 
+echo
+
+n=$( cat /proc/cpuinfo | grep processor | wc -l )
+
+echo "I found number of processors \(including virtual cores\) your computer has to be $n"
+echo
+
+# p =no of proc + 1 // i read it from one site... it's recommended to put one more than how many processors you have. For example: on a dual core machine you could compile the kernel with make -j3.
+ 
+p=`expr $n +  1 `
+
+
+echo 
+echo
+echo  "Checking Dependencies...."
+echo "I will try to download and install packages that are necessary for compilation but not installed.."
+echo
+echo Enter password to go into supervisor mode...
+sudo apt-get install libqt4-dev 
+echo
+echo
+
+
+
+echo
+echo check dependencies and install them if not already there...
+sudo apt-get install fakeroot build-essential crash kexec-tools makedumpfile kernel-wedge
+sudo apt-get build-dep linux
+#sudo apt-get install git-core libncurses5 libncurses5-dev libelf-dev asciidoc binutils-dev
+
+
+sudo apt-get install fakeroot build-essential
+sudo apt-get install crash kexec-tools makedumpfile kernel-wedge
+sudo apt-get build-dep linux-image-$(uname -r)
+sudo apt-get install git libncurses5 libncurses5-dev libnewt-dev
+
+sudo apt-get install build-essential
+sudo apt-get install linux-headers-`uname -r`
+
+
+
+#start extraction process in back ground...
+#to go into supervisor mode,,,
+sudo ls
+VER=$k
+cur=$(eval pwd)
+tar -xjvf linux-$VER.tar.bz2 
+
+
+#now linux-2.6.38.2 directory will get created..
+cd linux-$VER
+
+#HOW TO CONFIGURE KERNEL .... READ THE OPTION DESCRIPTORS AND CONFIGURE KERNEL...AND SAVE .CONFIG FILE IN DEFAULT DIRECTORY ITSELF
+#lets configure the kernel...
+
+echo
+echo
+echo " the next command wont work , unless you have  QT4 or QT3 library installed... if not install it..  "
+
+
+#now to copy your previous latest configuration from your kernel list
+con_file=$(ls /boot/config-* | sort | tail -1)
+sudo cp  $con_file .config
+
+
+
+#now to run graphical configurator...
+make xconfig
+
+echo
+
+echo "if you had seen a graphical menu earlier then qt3 or qt4 was installed... if you have not seen the graphical menu then  press ctrl+c to exit and install qt4...."
+echo "you cab run   \" sudo apt-get install libqt4-dev to install qt4.... ,you need to be online to download QT4...\"   "
+echo 
+echo
+echo "press Enter to continue"
+echo
+
+
+
+read a
+
+
+
+#uncomment this line if you are running kernel compilation again...
+#make clean
+
+
+echo This step will take a long time.. based on your configuration options...
+
+
+#now compile... takes a long time...
+make -j$p
+
+
+
+# ’make modules’ will built the various components which we chose to build as modules
+sudo make modules
+
+
+# ’make modules_install’, which must be run as root, ivileges) will create /lib/modules/‘uname -r‘ and copy the modules there.
+sudo make modules_install
+
+
+# Copy the kernel image and the System.map file to the /boot directory.
+
+sudo cp System.map /boot/System.map-$VER
+sudo cp arch/x86/boot/bzImage /boot/vmlinuz-$VER
+
+# it seems config is needed ... added this now
+sudo cp .config /boot/config-$VER
+
+# Create the initramfs image.
+cd /boot
+sudo mkinitramfs -o initrd.img-$VER $VER
+
+
+#and finally update the grub loader... if you use linux uses lilo check out how that works...
+sudo update-grub
+sudo update-grub2
+
+
+echo If you see grub update successful with ur new kernel image ... then go ahead and reboot the system...
+echo it will show the new kernel in the list... yipee! its done
+
+
+
+
+
+
+
+
+
+
